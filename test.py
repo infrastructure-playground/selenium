@@ -1,3 +1,4 @@
+import os
 import time
 import requests
 import unittest
@@ -9,6 +10,7 @@ from selenium.webdriver.firefox.options import Options as Firefox_Options
 class UITesting(unittest.TestCase):
 
     redirection_delay = 2
+    host = os.environ.get('HOST', 'http://192.168.1.115:3000')
 
     def setUp(self):
         self.options.add_argument("--headless")
@@ -19,7 +21,7 @@ class UITesting(unittest.TestCase):
 
     def testLogin(self):
         # Go to Login Page
-        self.browser.get('http://192.168.1.115:3000')
+        self.browser.get(f'{self.host}')
         # Enter Correct Username
         username = self.browser.find_element_by_id('username')
         username.send_keys('armadadean')
@@ -35,7 +37,7 @@ class UITesting(unittest.TestCase):
 
     def testRegister(self):
         # Go to Registration Page
-        self.browser.get('http://192.168.1.115:3000/register')
+        self.browser.get(f'{self.host}/register')
         # Enter non-existing username
         username = self.browser.find_element_by_id('username')
         username.send_keys(f'UI_{self.platform}_test')
