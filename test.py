@@ -27,5 +27,24 @@ class GoogleChromeTestCase(unittest.TestCase):
         # Redirect to Inventory List page
         inventory_list = self.browser.find_element_by_id('book-inventory')
 
+    def testRegister(self):
+        # Go to Registration Page
+        self.browser.get('http://192.168.1.115:3000/register')
+        # Enter non-existing username
+        username = self.browser.find_element_by_id('username')
+        username.send_keys('UI_test')
+        # Enter password
+        password = self.browser.find_element_by_id('password')
+        password.send_keys('pass1234')
+        # Enter confirmation password
+        confirm_password = self.browser.find_element_by_id('confirm_password')
+        confirm_password.send_keys('pass1234')
+        # Click Register
+        register_button = self.browser.find_element_by_id('register-button')
+        register_button.click()
+        time.sleep(2)
+        # Redirect to Inventory List page
+        inventory_list = self.browser.find_element_by_id('book-inventory')
+
 if __name__ == '__main__':
     unittest.main(verbosity=2)
