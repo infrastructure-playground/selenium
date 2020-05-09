@@ -60,7 +60,7 @@ class UITesting(unittest.TestCase):
 
 class GoogleChromeCompatibility(UITesting):
 
-    selenium_server = "selenium"
+    selenium_server = "selenium-chrome"
     options = Chrome_Options()
     platform = 'Chrome'
 
