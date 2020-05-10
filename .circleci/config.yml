@@ -7,9 +7,9 @@ jobs:
         environment:
           HOST: 'http://hga66883.com'
       - image: selenium/standalone-chrome
-        name: Selenium_Chrome
+        name: selenium-chrome
       - image: selenium/standalone-firefox
-        name: Selenium_Firefox
+        name: selenium-firefox
     - machine: true
     parallelism: 2
     steps:
