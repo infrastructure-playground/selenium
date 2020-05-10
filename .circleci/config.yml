@@ -11,10 +11,7 @@ jobs:
       - image: selenium/standalone-firefox
         name: selenium-firefox
     parallelism: 2
-    pre-steps:
-      - checkout
-      - pip install -r requirements.txt
-    post-steps:
+    steps:
       - checkout
       - run: python -m unittest test.GoogleChromeCompatibility
       - run: python -m unittest test.FirefoxCompatibility
@@ -25,6 +22,9 @@ workflows:
   pipeline:
     jobs:
       - regression_test_comaptibility:
+          pre-steps:
+            - run: checkout
+            - run: pip install -r requirements.txt
           filters:
             branches:
               only:
