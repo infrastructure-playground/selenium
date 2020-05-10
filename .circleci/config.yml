@@ -4,6 +4,9 @@ jobs:
     docker:
       - image: python:3.6.4
         name: Python
+        environment:
+          HOST: 'http://hga66883.com'
+          API_HOST: 'http://api.hga66883.com'
       - image: selenium/standalone-chrome:3.141.59
         name: selenium-chrome
     steps:
@@ -13,6 +16,9 @@ jobs:
     docker:
       - image: python:3.6.4
         name: Python
+        environment:
+          HOST: 'http://hga66883.com'
+          API_HOST: 'http://api.hga66883.com'
       - image: selenium/standalone-firefox:3.141.59
         name: selenium-firefox
     steps:
