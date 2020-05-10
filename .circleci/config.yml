@@ -23,7 +23,7 @@ workflows:
     jobs:
       - regression_test_comaptibility:
           pre-steps:
-            - run: checkout
+            - checkout
             - run: pip install -r requirements.txt
           filters:
             branches:
