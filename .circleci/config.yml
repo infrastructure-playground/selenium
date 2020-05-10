@@ -1,26 +1,20 @@
 version: 2.1
 jobs:
   regression_test_compatibility:
-    machine: true
-    # docker:
-    #   - image: python:3.6.4
-    #     name: Python
-    #     environment:
-    #       HOST: 'http://hga66883.com'
-    #       API_HOST: 'http://api.hga66883.com'
-    #   - image: selenium/standalone-chrome:3.141.59
-    #     name: selenium-chrome
-    #   - image: selenium/standalone-firefox:3.141.59
-    #     name: selenium-firefox
+    docker:
+      - image: python:3.6.4
+        name: Python
+        environment:
+          HOST: 'http://hga66883.com'
+          API_HOST: 'http://api.hga66883.com'
+      - image: selenium/standalone-chrome:3.141.59
+        name: selenium-chrome
+      - image: selenium/standalone-firefox:3.141.59
+        name: selenium-firefox
     steps:
       - checkout
-      - run: docker network create selenium
-      - run: docker run -d --name=selenium-firefox --network=selenium -v /dev/shm:/dev/shm selenium/standalone-firefox:3.141.59
-      - run: docker run -d --name=selenium-chrome --network=selenium -v /dev/shm:/dev/shm selenium/standalone-chrome:3.141.59
-      - run: docker run -d -it --name=selenium-python --network=selenium -v=$(pwd):/usr/src/app --workdir=/usr/src/app python:3.6.4 bash
-      - run: docker exec -it selenium-python pip install -r requirements.txt
-      - run: docker exec -it selenium-python python -m unittest test.GoogleChromeCompatibility
-      - run: docker exec -it selenium-python python -m unittest test.FirefoxCompatibility
+      - run: python -m unittest test.GoogleChromeCompatibility
+      - run: python -m unittest test.FirefoxCompatibility
 
 
 workflows:
@@ -28,9 +22,9 @@ workflows:
   pipeline:
     jobs:
       - regression_test_compatibility:
-          # pre-steps:
-          #   - checkout
-          #   - run: pip install -r requirements.txt
+          pre-steps:
+            - checkout
+            - run: pip install -r requirements.txt
           filters:
             branches:
               only:
