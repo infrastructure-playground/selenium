@@ -10,7 +10,7 @@ jobs:
         name: selenium-chrome
       - image: selenium/standalone-firefox
         name: selenium-firefox
-    - machine: true
+    machine: true
     parallelism: 2
     steps:
       - checkout
