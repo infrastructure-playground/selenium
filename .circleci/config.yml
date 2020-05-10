@@ -34,14 +34,14 @@ workflows:
   version: 2
   pipeline:
     jobs:
-      - regression_test_chrome_comaptibility:
-          pre-steps:
-            - checkout
-            - run: pip install -r requirements.txt
-          filters:
-            branches:
-              only:
-                - master
+      # - regression_test_chrome_comaptibility:
+      #     pre-steps:
+      #       - checkout
+      #       - run: pip install -r requirements.txt
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
       - regression_test_firefox_comaptibility:
           pre-steps:
             - checkout
