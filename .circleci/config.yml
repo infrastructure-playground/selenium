@@ -7,10 +7,8 @@ jobs:
         environment:
           HOST: 'http://hga66883.com'
           API_HOST: 'http://api.hga66883.com'
-      - image: selenium/standalone-chrome
+      - image: selenium/standalone-chrome:3.141.59
         name: selenium-chrome
-      - image: selenium/standalone-firefox
-        name: selenium-firefox
     steps:
       - checkout
       - run: python -m unittest test.GoogleChromeCompatibility
@@ -21,9 +19,7 @@ jobs:
         environment:
           HOST: 'http://hga66883.com'
           API_HOST: 'http://api.hga66883.com'
-      - image: selenium/standalone-chrome
-        name: selenium-chrome
-      - image: selenium/standalone-firefox
+      - image: selenium/standalone-firefox:3.141.59
         name: selenium-firefox
     steps:
       - checkout
