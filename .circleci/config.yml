@@ -4,9 +4,9 @@ jobs:
     docker:
       - image: python:3.6.4
         name: Python
-        # environment:
-        #   HOST: 'http://hga66883.com'
-        #   API_HOST: 'http://api.hga66883.com'
+        environment:
+          HOST: 'http://hga66883.com'
+          API_HOST: 'http://api.hga66883.com'
       - image: selenium/standalone-chrome:3.141.59
         name: selenium-chrome
       - image: selenium/standalone-firefox:3.141.59
@@ -29,11 +29,3 @@ workflows:
             branches:
               only:
                 - master
-      # - regression_test_firefox_comaptibility:
-      #     pre-steps:
-      #       - checkout
-      #       - run: pip install -r requirements.txt
-      #     filters:
-      #       branches:
-      #         only:
-      #           - master
