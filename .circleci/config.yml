@@ -1,0 +1,30 @@
+version: 2.1
+jobs:
+  regression_test_comaptibility:
+    docker:
+      - image: python:3.6.4
+        name: Python
+        environment:
+          HOST: 'http://hga66883.com'
+      - image: selenium/standalone-chrome
+        name: Selenium_Chrome
+      - image: selenium/standalone-firefox
+        name: Selenium_Firefox
+    - machine: true
+    parallelism: 2
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: python -m unittest test.GoogleChromeCompatibility
+      - run: python -m unittest test.FirefoxCompatibility
+
+
+workflows:
+  version: 2
+  pipeline:
+    jobs:
+      - regression_test_comaptibility:
+          filters:
+            branches:
+              only:
+                - master
