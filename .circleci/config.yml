@@ -14,7 +14,7 @@ jobs:
     steps:
       - checkout
       - run: python -m unittest test.FirefoxCompatibility
-      - run: python -m unittest test.GoogleChromeCompatibility
+      # - run: python -m unittest test.GoogleChromeCompatibility
 
 
 workflows:
