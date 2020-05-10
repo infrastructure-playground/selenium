@@ -11,10 +11,9 @@ jobs:
         name: selenium-chrome
       - image: selenium/standalone-firefox
         name: selenium-firefox
-    parallelism: 1
     steps:
       - checkout
-      - run: python -m unittest test.GoogleChromeCompatibility
+      # - run: python -m unittest test.GoogleChromeCompatibility
       - run: python -m unittest test.FirefoxCompatibility
 
 
