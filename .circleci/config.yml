@@ -6,6 +6,7 @@ jobs:
         name: Python
         environment:
           HOST: 'http://hga66883.com'
+          API_HOST: 'http://api.hga66883.com'
       - image: selenium/standalone-chrome
         name: selenium-chrome
       - image: selenium/standalone-firefox

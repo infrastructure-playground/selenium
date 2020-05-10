@@ -11,6 +11,7 @@ class UITesting(unittest.TestCase):
 
     redirection_delay = 2
     host = os.environ.get('HOST', 'http://192.168.1.115:3000')
+    api_host = os.environ.get('API_HOST', 'http://192.168.1.115:8000')
 
     def setUp(self):
         self.options.add_argument("--headless")
@@ -55,7 +56,7 @@ class UITesting(unittest.TestCase):
         inventory_list = self.browser.find_element_by_id('book-inventory')
 
     def tearDown(self):
-        requests.get(f'http://192.168.1.115:8000/'
+        requests.get(f'{self.api_host}/'
                      f'delete-test-registered-user/'
                      f'?platform={self.platform}')
 
