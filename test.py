@@ -54,8 +54,6 @@ class UITesting(unittest.TestCase):
         time.sleep(self.redirection_delay)
         # Redirect to Inventory List page
         inventory_list = self.browser.find_element_by_id('book-inventory')
-
-    def tearDown(self):
         requests.get(f'{self.api_host}/'
                      f'delete-test-registered-user/'
                      f'?platform={self.platform}')
