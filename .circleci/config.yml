@@ -11,9 +11,11 @@ jobs:
       - image: selenium/standalone-firefox
         name: selenium-firefox
     parallelism: 2
-    steps:
+    pre-steps:
       - checkout
-      - setup_remote_docker
+      - pip install -r requirements.txt
+    post-steps:
+      - checkout
       - run: python -m unittest test.GoogleChromeCompatibility
       - run: python -m unittest test.FirefoxCompatibility
 
