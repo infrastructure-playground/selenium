@@ -1,28 +1,19 @@
 version: 2.1
 jobs:
-  regression_test_chrome_comaptibility:
-    docker:
-      - image: python:3.6.4
-        name: Python
-        environment:
-          HOST: 'http://hga66883.com'
-          API_HOST: 'http://api.hga66883.com'
-      - image: selenium/standalone-chrome:3.141.59
-        name: selenium-chrome
-    steps:
-      - checkout
-      - run: python -m unittest test.GoogleChromeCompatibility
-  regression_test_firefox_comaptibility:
+  regression_test_compatibility:
     docker:
       - image: python:3.6.4
         name: Python
         # environment:
         #   HOST: 'http://hga66883.com'
         #   API_HOST: 'http://api.hga66883.com'
+      - image: selenium/standalone-chrome:3.141.59
+        name: selenium-chrome
       - image: selenium/standalone-firefox:3.141.59
         name: selenium-firefox
     steps:
       - checkout
+      - run: python -m unittest test.GoogleChromeCompatibility
       - run: python -m unittest test.FirefoxCompatibility
 
 
@@ -30,15 +21,7 @@ workflows:
   version: 2
   pipeline:
     jobs:
-      # - regression_test_chrome_comaptibility:
-      #     pre-steps:
-      #       - checkout
-      #       - run: pip install -r requirements.txt
-      #     filters:
-      #       branches:
-      #         only:
-      #           - master
-      - regression_test_firefox_comaptibility:
+      - regression_test_compatibility:
           pre-steps:
             - checkout
             - run: pip install -r requirements.txt
@@ -46,3 +29,11 @@ workflows:
             branches:
               only:
                 - master
+      # - regression_test_firefox_comaptibility:
+      #     pre-steps:
+      #       - checkout
+      #       - run: pip install -r requirements.txt
+      #     filters:
+      #       branches:
+      #         only:
+      #           - master
