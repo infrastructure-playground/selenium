@@ -10,8 +10,8 @@ from selenium.webdriver.firefox.options import Options as Firefox_Options
 class UITesting(unittest.TestCase):
 
     redirection_delay = 3
-    host = os.environ.get('HOST', 'http://192.168.1.115:3000')
-    api_host = os.environ.get('API_HOST', 'http://192.168.1.115:8000')
+    host = os.environ.get('HOST', 'http://hga66883.com')
+    api_host = os.environ.get('API_HOST', 'http://api.hga66883.com')
 
     def setUp(self):
         self.options.add_argument("--headless")
@@ -54,6 +54,8 @@ class UITesting(unittest.TestCase):
         time.sleep(self.redirection_delay)
         # Redirect to Inventory List page
         inventory_list = self.browser.find_element_by_id('book-inventory')
+
+    def tearDown(self):
         requests.get(f'{self.api_host}/'
                      f'delete-test-registered-user/'
                      f'?platform={self.platform}')
