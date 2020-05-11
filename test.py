@@ -19,9 +19,6 @@ class UITesting(unittest.TestCase):
             command_executor=f"http://{self.selenium_server}:4444/wd/hub",
             desired_capabilities=self.options.to_capabilities())
         self.addCleanup(self.browser.quit)
-        requests.get(f'{self.api_host}/'
-                     f'delete-test-registered-user/'
-                     f'?platform={self.platform}')
 
     def testLogin(self):
         # Go to Login Page
@@ -40,6 +37,10 @@ class UITesting(unittest.TestCase):
         inventory_list = self.browser.find_element_by_id('book-inventory')
 
     def testRegister(self):
+        # Ensure the user about to be registered does not exist
+        requests.get(f'{self.api_host}/'
+                     f'delete-test-registered-user/'
+                     f'?platform={self.platform}')
         # Go to Registration Page
         self.browser.get(f'{self.host}/register')
         # Enter non-existing username
