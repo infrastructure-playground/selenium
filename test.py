@@ -10,8 +10,8 @@ from selenium.webdriver.firefox.options import Options as Firefox_Options
 class UITesting(unittest.TestCase):
 
     redirection_delay = 3
-    host = os.environ.get('HOST', 'http://hga66883.com')
-    api_host = os.environ.get('API_HOST', 'http://api.hga66883.com')
+    host = os.environ.get('HOST', 'http://192.168.1.115:3000')
+    api_host = os.environ.get('API_HOST', 'http://192.168.1.115:8000')
 
     def setUp(self):
         self.options.add_argument("--headless")

@@ -13,8 +13,8 @@ jobs:
           selenium/standalone-chrome:3.141.59
       - run: >-
           docker run -d -it
-          -e HOST=example.com
-          -e API_HOST=api.example.com
+          -e HOST=http://hga66883.com
+          -e API_HOST=http://api.hga66883.com
           --name=selenium-python
           --network=selenium
           -v=$(pwd):/usr/src/app
@@ -34,8 +34,8 @@ jobs:
           selenium/standalone-firefox:3.141.59
       - run: >-
           docker run -d -it
-          -e HOST=example.com
-          -e API_HOST=api.example.com
+          -e HOST=http://hga66883.com
+          -e API_HOST=http://api.hga66883.com
           --name=selenium-python
           --network=selenium
           -v=$(pwd):/usr/src/app
