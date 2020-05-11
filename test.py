@@ -9,7 +9,7 @@ from selenium.webdriver.firefox.options import Options as Firefox_Options
 
 class UITesting(unittest.TestCase):
 
-    redirection_delay = 3
+    redirection_delay = 4
     host = os.environ.get('HOST', 'http://192.168.1.115:3000')
     api_host = os.environ.get('API_HOST', 'http://192.168.1.115:8000')
 
